@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Web call plus Quick Demo</title>
+    <script src="./config.js"></script>
+  </head>
+  <body>
+    <div class="rong-container">
+      <h3 class="rong-title"> Web call plus Quick Demo </h3>
+      <div class="rong-login-box">
+        <div class="im-wrap">
+          <div class="input-wrap test-after">
+            <input class="rong-input" id="appkey" type="text" value="" placeholder="请输入 appkey" autocomplete="off" oninput="inputChangeFn(this)">
+          </div>
+          <div class="input-wrap">
+            <input class="rong-input" type="button" value="初始化 IM" onclick="initIM(this)">
+          </div>
+          <div class="input-wrap">
+            <input class="rong-input" type="button" value="初始化 CallPlus" onclick="initCallPlusClient(this)">
+          </div>
+          <div class="input-wrap">
+            <input class="rong-input" id="token" type="text" value="" placeholder="请输入 token" autocomplete="off" oninput="inputChangeFn(this)">
+          </div>
+          <div class="input-wrap" hasAfter="no">
+            <input class="rong-input" type="button" value="连接 IM" onclick="connectIM(this)">
+          </div>
+        </div>
+        <div class="boundary-line">
+          <span class="arrow horizontal-arrow left-horizontal-arrow">------------------------</span>
+          <span class="arrow vertical-arrow">--------------------------------------------------------------------</span>
+          <span class="arrow horizontal-arrow right-horizontal-arrow">------------------------></span>
+        </div>
+        <div class="rtc-wrap">
+          <div class="input-wrap">
+            <input class="rong-input" id="setCallPlusListener" type="button" value="设置 callPlus 事件监听" onclick="setCallPlusListener(this)">
+          </div>
+          <div class="input-wrap">
+            <input class="rong-input" type="button" value="设置本端视频渲染视图" onclick="setLocalVideoView(this)">
+          </div>
+          <div class="input-wrap">
+            <input class="rong-input rong-input-accept" type="button" disabled value="接听" onclick="acceptFn(this)">
+            <span class="condition-tips">等待 onReceivedCall 监听触发</span>
+          </div>
+          <div class="input-wrap">
+            <input class="rong-input" type="button" value="设置对端视频渲染视图" onclick="setRemoteVideoView(this)">
+          </div>
+          <div class="input-wrap">
+            <input class="rong-input rong-input-play" disabled type="button" value="播放资源" onclick="playMedia(this)">
+            <span class="condition-tips">等待 onUserMediaAvailable 监听触发</span>
+          </div>
+          <div class="input-wrap" hasAfter="no">
+            <input class="rong-input" type="button" value="挂断" onclick="hangup(this)">
+          </div>
+        </div>
+        <div class="duration-wrap">
+          通话计时:<span id="duration">0</span>
+        </div>
+        <div id="rong-video-box"></div>
+      </div>
+    </div>
+    <!-- RongIMLib -->
+    <script src="https://cdn.ronghub.com/RongIMLib-5.8.3.prod.js"></script>
+    <!-- RTCLib v5 -->
+    <script src="https://cdn.ronghub.com/RCRTC-5.6.16.prod.js"></script>
+    <!-- CallPlus -->
+    <script src="https://cdn.ronghub.com/CallPlus-1.0.0.prod.js"></script>
+    <script src="./assets/js/im.js"></script>
+    <script src="./assets/js/callPlus.js"></script>
+    <script>
+      const inputChangeFn = (e) => {
+        if (e.value) {
+          e.parentElement.className = 'input-wrap pass';
+        } else {
+          e.parentElement.className = 'input-wrap';
+        }
+      }
+    </script>
+  </body>
+</html>
